@@ -2,17 +2,45 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
+// var timeBlock = $('.time-block')
+
+// var textArea = $('.description')
+// var pastTime = $('.past')
+// var presentTime = $('.present')
+// var futureTime = $('.future')
+
 var currentDay = $('#currentDay')
+var saveBtn = $('.saveBtn')
 
 function displayCurrentDay(){
-  var rightNow = dayjs().format('dddd, MMMM Do')
+  var rightNow = dayjs().format('dddd, MMMM D, YYYY h:mm A')
   currentDay.text(rightNow)
 }
 
-// $(function () {}
+function setLocalStorage () {
+  $('.time-block').each(function(){
+    var textId = $(this).attr('id')
+    var textAreaValue = $(this).find('textarea').val()
+    localStorage.setItem(textId, textAreaValue)
+  })
+}
+
+saveBtn.on('click', setLocalStorage)
+
+$(document).ready(function() {
+  $('.time-block').each(function(){
+    var textId = $(this).attr('id');
+    var savedTextAreaValue = localStorage.getItem(textId);
+    $(this).find('textarea').val(savedTextAreaValue);
+  });
+});
+
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
+
+
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
@@ -30,3 +58,4 @@ function displayCurrentDay(){
   // TODO: Add code to display the current date in the header of the page.
 
 displayCurrentDay()
+setInterval(displayCurrentDay, 1000)
