@@ -27,7 +27,7 @@ https://github.com/coding-boot-camp/crispy-octo-meme.git
 
 ## Deployed Page Link
 
-https://thoak90codes.github.io/work-day-scheduler/ 
+https://adorahtho.github.io/work-day-scheduler/ 
 
 ## Author, Contributors, & Credits
 
